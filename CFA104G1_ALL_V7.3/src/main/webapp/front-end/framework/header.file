@@ -1,0 +1,24 @@
+	<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+  <header id="header">
+     <a href="<%=request.getContextPath()+"/index.jsp" %>" class="logo"><img src="<%=request.getContextPath()+"/resources/img/logo.png" %>" alt="logo"></a>
+	 <a href="<%=request.getContextPath()+"/front-end/mem/memindex.jsp" %>" class="log">會員專區</a>
+	 <a href="<%=request.getContextPath()+"/front-end/roomOrder/addRoomreservation.jsp" %>" class="roomclick">預約訂房</a>
+	 <a href="<%=request.getContextPath()+"/front-end/activity/activityIndex.jsp" %>" class="activity">報名活動</a>
+	 <a href="<%=request.getContextPath()+"/front-end/Product/productShopPage.jsp" %>" class="product">訂購伴手禮</a>
+	 <a href="<%=request.getContextPath()+"/front-end/roomservice/login.jsp" %>" class="roomservice">客房服務</a>
+
+     <div class="mobile-menu-btn"><i class="fa fa-bars" style="color:#5d0000;"></i></div>
+     <nav class="main-menu top-menu">
+     <ul>
+          <li class="active"><a href="<%=request.getContextPath()+"/index.jsp" %>">Home</a></li>
+          <li><a href="<%=request.getContextPath()+"/front-end/NewsList/NewsListFrontPage.jsp" %>">關於彌生</a></li>
+          <li><a href="<%=request.getContextPath()+"/front-end/hotnews/listAllHotNews.jsp" %>">最新消息</a></li>
+          <li><a href="<%=request.getContextPath()+"/front-end/roomType/listAllRoomType.jsp" %>">房型介紹</a></li>
+          <li><a href="<%=request.getContextPath()+"/resortmap.jsp" %>">交通資訊</a></li>
+          <li><a href="<%=request.getContextPath()+"/front-end/QAlist/QAlist.jsp" %>">Q&A</a></li>
+          <li><a href="mailto:yayoihotspringresort@gmail.com?subject=客服信件:[您的問題]">聯絡我們</a></li>
+     </ul>
+  </nav>
+  
+</header>

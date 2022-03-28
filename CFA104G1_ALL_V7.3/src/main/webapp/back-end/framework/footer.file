@@ -1,0 +1,270 @@
+ <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+    <!-- /.content -->
+  </div>
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2022 <a href="<%=request.getContextPath()+"/index.jsp" %>">彌生溫泉度假酒店</a></strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0
+    </div>
+  </footer>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="<%=request.getContextPath()+"/resources/plugins/jquery/jquery.min.js" %>"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<%=request.getContextPath()+"/resources/plugins/jquery-ui/jquery-ui.min.js" %>"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="<%=request.getContextPath()+"/resources/plugins/bootstrap/js/bootstrap.bundle.min.js" %>"></script>
+<!-- AdminLTE App -->
+<script src="<%=request.getContextPath()+"/resources/dist/js/adminlte.js" %>"></script>
+
+<!-- Chat Modal start -->
+<div class="modal fade" id="chatmodal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body" style="margin:0; padding:3px 0 0 0;">
+				<iframe src="" frameborder="0" width="97.5%" height="600px" style="margin:0; padding:0;" allowfullscreen></iframe>
+			</div>
+			<!--
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-default close-modal" data-dismiss="modal" onclick="$(&quot;video&quot;).each(function () { this.pause() });">Close</button>
+		    </div>
+		    -->
+		</div>
+	</div>
+</div>
+<!-- Chat Modal end -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>
+<!-- reset the Modal when close -->
+
+<!-- get chat count start -->
+<script>
+
+	var MyPoint = "/FriendWS/G1CS";
+	var host = window.location.host;
+	var path = window.location.pathname;
+	var webCtx = path.substring(0, path.indexOf('/', 1));
+	var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+
+	//var statusOutput = document.getElementById("statusOutput");
+	//var messagesArea = document.getElementById("messagesArea");
+	var self = 'G1CS';
+	var webSocket;
+
+	function connect() {
+		// create a websocket
+		webSocket = new WebSocket(endPointURL);
+
+		webSocket.onopen = function(event) {
+			console.log("Connect Success!");
+		};
+
+		webSocket.onmessage = function(event) {
+			var jsonObj = JSON.parse(event.data);
+			console.log(jsonObj);
+				console.log(jsonObj.type);
+			if ("open" === jsonObj.type) {
+				refreshFriendCnt(jsonObj);
+			} else if ("chat" === jsonObj.type) {
+			 	// update message cnt
+			} else if ("history" === jsonObj.type) {
+				// update history
+			} else if ("close" === jsonObj.type) {
+				refreshFriendCnt(jsonObj);
+			}
+			
+		};
+
+		webSocket.onclose = function(event) {
+			console.log("Disconnected!");
+		};
+	}
+
+	// 有好友上線或離線就更新數字
+	function refreshFriendCnt(jsonObj) {
+		var friends = jsonObj.users;
+		var friendCntSpan = document.getElementById("chatcount");
+		console.log(friends.length);
+		friendCntSpan.innerText = friendCntSpan.textContent = (friends.length-1);
+		refreshFriendList(friends);
+	}
+	function refreshFriendList(friends) {
+		var friendlist = document.getElementById("friendlist");
+		friendlist.innerHTML = '';
+		for (var i = 0; i < friends.length; i++) {
+			if (friends[i] === self) { continue; }
+			console.log(friends[i]); 
+			friendlist.innerHTML += getFriendItem(friends[i]);
+		}
+	}
+	function disconnect() {
+		webSocket.close();
+	}
+	function getFriendItem(name) {
+        result='<a href="<%=request.getContextPath()+"/back-end/chat/chat.jsp" %>"'
+            +' class="dropdown-item chat-room"'
+            +'  data-toggle="modal" data-backdrop="static" '
+            +'  data-keyboard="false" '
+            +'  data-name='+name+'"'
+            +'  data-target="#chatmodal" '
+            +'  title="線上客服">'
+            +' <div class="media">'
+            //+'   <img src="<%=request.getContextPath()+"/resources/dist/img/user1-128x128.jpg" %>" alt="User Avatar" class="img-size-50 mr-3 img-circle">'
+            +'   <i class="fas fa-user fa-fw"></i>'
+            +'   <div class="media-body">'
+            +'     <h3 id="friend'+ name+'" class="dropdown-item-title">'
+            //+'       <span id="msgcnt" class="float-right text-sm text-danger">0</span>'
+            +'     </h3>'
+            + '    <p>'+name+'</p>'
+            //+'     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>'
+            +'   </div>'
+            +' </div>'
+          +' </a>'
+          +' <div class="dropdown-divider"></div>';	
+		return result;
+	}
+</script>
+<!-- get chat count start -->
+
+<script>
+
+$( document ).ready(function() {
+   connect();
+});
+
+$('body').on('click', '[data-toggle="modal"]', function(){
+        $($(this).data("target")+' .modal-content iframe').attr('src',$(this).attr('href'));
+        $($(this).data("target")+' .modal-title').text($(this).attr('title'));
+        
+}); 
+function CloseModal(frameElement) {
+     if (frameElement) {
+        var dialog = $(frameElement).closest(".modal");
+        if (dialog.length > 0) {
+            dialog.modal("hide");
+        }
+        location.reload();
+        console.log("reload after close modal.");
+     }
+}
+</script>	
+
+<script>
+$(function () {
+	'use strict'
+	var pathname = window.location.pathname;
+
+	if (pathname.match(/dashboard/)) $('#dashboard').addClass('active');
+	if (pathname.match(/back-end\/emplyee/)) $('#emplyee').addClass('active');
+	if (pathname.match(/qaList/)) $('#qa').addClass('active');
+	if (pathname.match(/newsList/)) $('#news').addClass('active');
+	if (pathname.match(/hotnews/)) $('#hotnews').addClass('active');
+	if (pathname.match(/product\//)) {
+		$('#store-tree').addClass('menu-open');
+		$('#store').addClass('active');
+		$('#store-product').addClass('active');
+	}
+	if (pathname.match(/productOrder\//)) {
+		$('#store-tree').addClass('menu-open');
+		$('#store').addClass('active');
+		$('#store-order').addClass('active');
+	}
+	if (pathname.match(/mem\//)) $('#member').addClass('active');
+
+	if (pathname.match(/checkInAndOut\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-check').addClass('active');
+	}
+	if (pathname.match(/roomOrder\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-order').addClass('active');
+	}
+	if (pathname.match(/roomOrderList\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-orderdetail').addClass('active');
+	}
+	if (pathname.match(/roomSchedule\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-schedule').addClass('active');
+	}
+	if (pathname.match(/roomtype\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-type').addClass('active');
+	}
+	if (pathname.match(/roomType\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-type').addClass('active');
+	}
+	if (pathname.match(/room\//)) {
+		$('#room-tree').addClass('menu-open');
+		$('#room').addClass('active');
+		$('#room-mng').addClass('active');
+	}
+	if (pathname.match(/RoomServiceOrder\//)) {
+		$('#service-tree').addClass('menu-open');
+		$('#service').addClass('active');
+		$('#service-order').addClass('active');
+	}
+	if (pathname.match(/RoomServiceOrderList\//)) {
+		$('#service-tree').addClass('menu-open');
+		$('#service').addClass('active');
+		$('#service-orderlist').addClass('active');
+	}
+	if (pathname.match(/Meal\//)) {
+		$('#service-tree').addClass('menu-open');
+		$('#service').addClass('active');
+		$('#service-meal').addClass('active');
+	}
+	if (pathname.match(/MealCategory\//)) {
+		$('#service-tree').addClass('menu-open');
+		$('#service').addClass('active');
+		$('#service-category').addClass('active');
+	}
+	
+	
+	if (pathname.match(/activityOrder\//)) {
+		$('#act-tree').addClass('menu-open');
+		$('#act').addClass('active');
+		$('#act-order').addClass('active');
+	}
+	if (pathname.match(/activityCategory/)) {
+		$('#act-tree').addClass('menu-open');
+		$('#act').addClass('active');
+		$('#act-cat').addClass('active');
+	}
+	if (pathname.match(/activity\//)) {
+		$('#act-tree').addClass('menu-open');
+		$('#act').addClass('active');
+		$('#act-act').addClass('active');
+	}
+	if (pathname.match(/activitySession/)) {
+		$('#act-tree').addClass('menu-open');
+		$('#act').addClass('active');
+		$('#act-session').addClass('active');
+	}
+	
+	
+});	  
+</script>

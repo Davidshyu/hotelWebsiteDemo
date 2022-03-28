@@ -1,0 +1,286 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+ 
+ <div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #5D0000;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color: rgba(255,255,255,.8);"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" style="color: rgba(255,255,255,.8);">
+          <i class="far fa-comments"></i>
+          <span id="chatcount" class="badge badge-danger navbar-badge">0</span>
+        </a>
+        <div id="friendlist" class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="<%=request.getContextPath()+"/back-end/chat/chat.jsp" %>" 
+             class="dropdown-item chat-room"
+             data-toggle="modal" data-backdrop="static" 
+             data-keyboard="false" 
+             data-name='+name+'"
+             data-target="#chatmodal" 
+             title="線上客服">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="<%=request.getContextPath()+"/resources/dist/img/user1-128x128.jpg" %>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 id="friend'+ name+'" class="dropdown-item-title">
+                  <span id="msgcnt" class="float-right text-sm text-danger">0</span>
+                </h3>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" style="color: rgba(255,255,255,.8);">
+        	<i class="fas fa-user fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+          <a href="<%=request.getContextPath()+"/back-end/admin/login.jsp" %>" class="dropdown-item">
+          	<i class="fas fa-sign-out-alt"></i>
+        	登出
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-warning elevation-4" style="background-color: #C99A5B;">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link"  style="background-color: #5D0000;">
+      <img src="<%=request.getContextPath()+"/resources/images/favicon.png" %>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">彌生酒店管理後台</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="<%=request.getContextPath()+"/resources/images/avar.png" %>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block" style="color: #222222"><%= session.getAttribute("username") %></a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a id="dashboard" href="<%=request.getContextPath()+"/back-end/admin/dashboard.jsp" %>" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                經營看板
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="emplyee" href="<%=request.getContextPath()+"/back-end/emplyee/listAllEmp.jsp" %>" class="nav-link">
+              <i class="nav-icon fas fa-user fa-fw"></i>
+              <p>
+                員工管理
+              </p>
+            </a>
+          </li>
+          <li id="room-tree" class="nav-item">
+            <a id="room" href="#" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                房務管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="room-check" href="<%=request.getContextPath()+"/back-end/checkInAndOut/CheckcControl.jsp" %>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>入住管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="room-order" href="<%=request.getContextPath()+"/back-end/roomOrder/listAllOrder.jsp" %>" class="nav-link">
+                  <i class="fas fa-bed nav-icon"></i>
+                  <p>住宿訂單管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="room-orderdetail" href="<%=request.getContextPath()+"/back-end/roomOrderList/listAllRoomOrderList.jsp" %>" class="nav-link">
+                  <i class="fas fa-bed nav-icon"></i>
+                  <p>訂單明細管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="room-type" href="<%=request.getContextPath()+"/back-end/roomtype/listAllRoomType.jsp" %>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>房型管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="room-mng" href="<%=request.getContextPath()+"/back-end/room/listAllRoom.jsp" %>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>房間管理</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+           <li id="service-tree" class="nav-item">
+            <a id="service" href="#" class="nav-link">
+              <i class="nav-icon fab fa-buffer"></i>
+              <p>
+                客房服務
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="service-order" href="<%=request.getContextPath()+"/back-end/RoomServiceOrder/listAllRoomServiceOrder.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>客房服務訂單</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="service-orderlist" href="<%=request.getContextPath()+"/back-end/RoomServiceOrderList/listAllRoomServiceOrderList.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>客房服務訂單明細</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="service-meal" href="<%=request.getContextPath()+"/back-end/Meal/listAllMeal.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>客房服務項目</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="service-category" href="<%=request.getContextPath()+"/back-end/MealCategory/listAllMealCategory.jsp" %>" class="nav-link">
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                  <p>客房服務類別</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          
+          <li class="nav-item">
+            <a id="qa" href="<%=request.getContextPath()+"/back-end/qaList/listAllQA.jsp" %>" class="nav-link">
+              <i class="nav-icon fa fa-question"></i>
+              <p>
+                Q&A維護
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="hotnews" href="<%=request.getContextPath()+"/back-end/hotnews/listAllHotNews.jsp" %>" class="nav-link">
+              <i class="nav-icon fas fa-bookmark"></i>
+              <p>
+                最新消息
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="news" href="<%=request.getContextPath()+"/back-end/newsList/listAllNewsList.jsp" %>" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+          		報導管理
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="member" href="<%=request.getContextPath()+"/back-end/mem/listAllMem.jsp" %>" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+          		會員管理
+              </p>
+            </a>
+          </li>
+
+           <li id="store-tree" class="nav-item">
+            <a id="store" href="#" class="nav-link">
+              <i class="nav-icon fab fa-buffer"></i>
+              <p>
+                商城管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="store-product" href="<%=request.getContextPath()+"/back-end/product/select_Page.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>管理商品</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="store-order" href="<%=request.getContextPath()+"/back-end/productOrder/Order_select_page.jsp" %>" class="nav-link">
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                  <p>管理商品訂單</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+           <li id="act-tree" class="nav-item">
+            <a id="act" href="#" class="nav-link">
+              <i class="nav-icon fab fa-buffer"></i>
+              <p>
+                 活動管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="act-order" href="<%=request.getContextPath()+"/back-end/activityOrder/listAllActivityOrder.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>活動訂單</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="act-cat" href="<%=request.getContextPath()+"/back-end/activityCategory/listAllActivityCategory.jsp" %>" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>活動類別</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="act-act" href="<%=request.getContextPath()+"/back-end/activity/listAllActivity.jsp" %>" class="nav-link">
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                  <p>活動管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="act-session" href="<%=request.getContextPath()+"/back-end/activitySession/listAllActivitySession.jsp" %>" class="nav-link">
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                  <p>活動場次</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+       </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+ 
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+ 

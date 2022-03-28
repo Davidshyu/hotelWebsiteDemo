@@ -1,0 +1,99 @@
+ <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="social">
+                    <a href=""><li class="fa fa-instagram"></li></a>
+                    <a href=""><li class="fa fa-twitter"></li></a>
+                    <a href=""><li class="fa fa-facebook-f"></li></a>
+                </div>
+            </div>
+            <div class="col-12">
+               <ul>
+                  <li class="active"><a href="<%=request.getContextPath()+"/index.jsp" %>" style="color:#C99A5B">Home</a></li>
+                  <li><a href="<%=request.getContextPath()+"/front-end/NewsList/NewsListFrontPage.jsp" %>" style="color:#C99A5B">關於彌生</a></li>
+		          <li><a href="<%=request.getContextPath()+"/front-end/hotnews/listAllHotNews.jsp" %>">最新消息</a></li>
+		          <li><a href="<%=request.getContextPath()+"/front-end/roomType/listAllRoomType.jsp" %>">房型介紹</a></li>
+                  <li><a href="<%=request.getContextPath()+"/resortmap.jsp" %>" style="color:#C99A5B">交通資訊</a></li>
+                  <li><a href="<%=request.getContextPath()+"/front-end/qa/listAllQa.jsp" %>" style="color:#C99A5B">Q&A</a></li>
+                  <li><a href="mailto:yayoihotspringresort@gmail.com?subject=客服信件:[您的問題]">聯絡我們</a></li>
+              </ul>
+          </div>
+          <div class="col-12">
+            <p>55546 南投縣魚池鄉日月潭中正路23號|<a href="tel:+886492856788" style="color:#C99A5B">+886-49-285-6788</a></p>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Section End -->
+<a class="chat-room" data-toggle="modal" data-backdrop="static" data-keyboard="false" 
+   href="<%=request.getContextPath()+"/front-end/chat/connect.jsp"%>" data-target="#chatmodal" title="線上客服">
+   <i class="fa fa-commenting"></i></a>
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Chat Modal start -->
+<div class="modal fade" id="chatmodal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body">
+				<iframe src="" frameborder="0" width="100%" height="600px" allowfullscreen></iframe>
+			</div>
+			<!--
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-default close-modal" data-dismiss="modal" onclick="$(&quot;video&quot;).each(function () { this.pause() });">Close</button>
+		    </div>
+		    -->
+		</div>
+	</div>
+</div>
+<!-- Chat Modal end -->
+<!-- Vendor JavaScript File -->
+<script src="<%=request.getContextPath()+"/resources/vendor/jquery/jquery.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/jquery/jquery-migrate.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/bootstrap/js/bootstrap.bundle.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/easing/easing.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/stickyjs/sticky.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/superfish/hoverIntent.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/superfish/superfish.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/wow/wow.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/slick/slick.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/tempusdominus/js/moment.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/tempusdominus/js/moment-timezone.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/plugins/moment/moment.min.js" %>"></script>
+
+
+
+<!-- Booking Javascript File -->
+<script src="<%=request.getContextPath()+"/resources/js/booking.js" %>"></script>
+<script src="<%=request.getContextPath()+"/resources/js/jqBootstrapValidation.min.js" %>"></script>
+
+<!-- Main Javascript File -->
+<script src="<%=request.getContextPath()+"/resources/js/main.js" %>"></script>
+
+
+<!-- reset the Modal when close -->
+<script>
+$('body').on('click', '[data-toggle="modal"]', function(){
+        $($(this).data("target")+' .modal-content iframe').attr('src',$(this).attr('href'));
+        $($(this).data("target")+' .modal-title').text($(this).attr('title'));
+        
+}); 
+
+$('#chatmodal').on('hidden.bs.modal', function () {
+  	console.log("close Modal action!");
+})
+
+function CloseModal(frameElement) {
+     if (frameElement) {
+        var dialog = $(frameElement).closest(".modal");
+        console.log("close Modal!");
+        if (dialog.length > 0) {
+            dialog.modal("hide");
+        }
+     }
+}
+</script>	

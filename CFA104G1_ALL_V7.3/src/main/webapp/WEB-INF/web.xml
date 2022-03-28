@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>CFA104G1_ALL_V4</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/CFA104G1</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
+  <servlet>
+	<servlet-name>HotNewsServlet</servlet-name>
+	<servlet-class>com.hotnews.controller.HotNewsServlet</servlet-class>
+  </servlet>
+	
+  <servlet-mapping>
+	<servlet-name>HotNewsServlet</servlet-name>
+	<url-pattern>/hotnews/HotNews.do</url-pattern>
+  </servlet-mapping>
+   
+  <servlet>
+	<servlet-name>MemberServlet</servlet-name>
+	<servlet-class>com.member.controller.MemberServlet</servlet-class>
+  </servlet>
+	
+  <servlet-mapping>
+	<servlet-name>MemberServlet</servlet-name>
+	<url-pattern>/member/MemberServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>EmpServlet</servlet-name>
+    <servlet-class>com.emp.controller.EmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpServlet</servlet-name>
+    <url-pattern>/emp/emp.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+	<servlet-name>NameServlet</servlet-name>
+	<servlet-class>com.chat.controller.NameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>NameServlet</servlet-name>
+	<url-pattern>/chat.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RoomServlet</servlet-name>
+    <servlet-class>com.room.controller.RoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServlet</servlet-name>
+    <url-pattern>/room/room.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RoomTypeServlet</servlet-name>
+    <servlet-class>com.roomType.controller.RoomTypeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomTypeServlet</servlet-name>
+    <url-pattern>/roomType/roomType.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RoomTypePicReader</servlet-name>
+    <servlet-class>com.roomTypePic.controller.RoomTypePicReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomTypePicReader</servlet-name>
+    <url-pattern>/roomType/roomTypePic.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>QAListServlet</servlet-name>
+    <servlet-class>com.qalist.controller.QAListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QAListServlet</servlet-name>
+    <url-pattern>/qaList/qaList.do</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>RoomTypePicReaderforid</servlet-name>
+    <servlet-class>com.roomTypePic.controller.RoomTypePicReaderforid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomTypePicReaderforid</servlet-name>
+    <url-pattern>/roomType/roomTypePicId.do</url-pattern>
+  </servlet-mapping>
+     <servlet>
+    <servlet-name>RoomTypePicServlet</servlet-name>
+    <servlet-class>com.roomTypePic.controller.RoomTypePicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomTypePicServlet</servlet-name>
+    <url-pattern>/roomType/roomTypePicServlet.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>NewsListServlet</servlet-name>
+    <servlet-class>com.newsList.controller.NewsListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsListServlet</servlet-name>
+    <url-pattern>/newsList/NewsList.do</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>NewsListImageServlet</servlet-name>
+    <servlet-class>com.newsListImage.controller.NewsListImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsListImageServlet</servlet-name>
+    <url-pattern>/newsListImage/NewsListImage.do</url-pattern>
+  </servlet-mapping>
+
+   <servlet>
+    <servlet-name>productClassServlet</servlet-name>
+    <servlet-class>com.productClass.controller.productClassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productClassServlet</servlet-name>
+    <url-pattern>/productClass/ProductClass.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>productServlet</servlet-name>
+    <servlet-class>com.product.controller.productServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productServlet</servlet-name>
+    <url-pattern>/product/Product.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>productImageServlet</servlet-name>
+    <servlet-class>com.productImage.controller.productImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productImageServlet</servlet-name>
+    <url-pattern>/productImg/ProductImg.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>orderServlet</servlet-name>
+    <servlet-class>com.shopOrder.controller.orderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>orderServlet</servlet-name>
+    <url-pattern>/order/Order.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MemServlet</servlet-name>
+    <servlet-class>com.mem.controller.MemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemServlet</servlet-name>
+    <url-pattern>/mem/mem.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemDBPicReader</servlet-name>
+    <servlet-class>com.mem.controller.MemDBPicReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemDBPicReader</servlet-name>
+    <url-pattern>/mem/mempic.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemVerify</servlet-name>
+    <servlet-class>com.mem.controller.MemVerify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemVerify</servlet-name>
+    <url-pattern>/mem/memver.do</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>EmplyeeServlet</servlet-name>
+    <servlet-class>com.emplyee.controller.EmplyeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmplyeeServlet</servlet-name>
+    <url-pattern>/emplyee/emp.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RoomOrderServlet</servlet-name>
+    <servlet-class>com.roomOrder.controller.RoomOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomOrderServlet</servlet-name>
+    <url-pattern>/roomOrder/RoomOrderServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Room_order_listServlet</servlet-name>
+    <servlet-class>com.roomOrderList.controller.RoomOrderListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Room_order_listServlet</servlet-name>
+    <url-pattern>/roomOrderList/room_order_list.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RoomOrderListServlet</servlet-name>
+    <servlet-class>com.roomOrderList.controller.RoomOrderListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomOrderListServlet</servlet-name>
+    <url-pattern>/roomOrderList/roomOrderList.do</url-pattern>
+  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>RoomTypePicReaderforid2</servlet-name>
+		<servlet-class>com.roomTypePic.controller.RoomTypePicReaderforid2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoomTypePicReaderforid2</servlet-name>
+		<url-pattern>/roomType/roomTypePicId2.do</url-pattern>
+	</servlet-mapping>
+
+  <servlet>
+    <servlet-name>MealServlet</servlet-name>
+    <servlet-class>com.meal.controller.MealServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MealServlet</servlet-name>
+    <url-pattern>/Meal/meal.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MealCategoryServlet</servlet-name>
+    <servlet-class>com.mealCategory.controller.MealCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MealCategoryServlet</servlet-name>
+    <url-pattern>/MealCategory/mealcategory.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RoomServiceOrderServlet</servlet-name>
+    <servlet-class>com.roomServiceOrder.controller.RoomServiceOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServiceOrderServlet</servlet-name>
+    <url-pattern>/RoomServiceOrder/RoomServiceOrder.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RoomServiceOrderListServlet</servlet-name>
+    <servlet-class>com.roomServiceOrderList.controller.RoomServiceOrderListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServiceOrderListServlet</servlet-name>
+    <url-pattern>/RoomServiceOrderList/RoomServiceOrderList.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  		<servlet-name>ShoppingServlet</servlet-name>
+		<servlet-class>com.meal.controller.ShoppingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	    <servlet-name>ShoppingServlet</servlet-name>
+	    <url-pattern>/Shopping.do</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>filters.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <url-pattern>/front-end/mem/memindex.jsp</url-pattern>
+    <url-pattern>/front-end/mem/memUpdateAvator.jsp</url-pattern>
+    <url-pattern>/front-end/mem/memUpdateData.jsp</url-pattern>
+    <url-pattern>/front-end/mem/memUpdatePwd.jsp</url-pattern>
+    <url-pattern>/front-end/Order/checkOut.jsp</url-pattern>
+    <url-pattern>/front-end/Order/transferPay.jsp</url-pattern>
+    <url-pattern>/front-end/Order/paymentSuccess.jsp</url-pattern>
+    <url-pattern>/front-end/Order/listOneOrder.jsp</url-pattern>
+    <url-pattern>/front-end/Order/MemberCentreOrder.jsp</url-pattern>
+    <url-pattern>/front-end/roomOrder/checkout.jsp</url-pattern>
+    <url-pattern>/front-end/activity/shopListAllActivity.jsp</url-pattern>
+    <url-pattern>/front-end/activity/cate1ListActivity.jsp</url-pattern>
+    <url-pattern>/front-end/activity/cate2ListActivity.jsp</url-pattern>
+    <url-pattern>/front-end/activity/cate3ListActivity.jsp</url-pattern>
+    
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>empLoginFilter</filter-name>
+    <filter-class>filters.EmpLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>empLoginFilter</filter-name>
+    <url-pattern>/back-end/emplyee/addEmp.jsp</url-pattern>
+    <url-pattern>/back-end/emplyee/listAllEmp.jsp</url-pattern>
+    <url-pattern>/back-end/emplyee/updateEmpInput.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  
+  <!-- 會員管理員 -->
+  <filter>
+    <filter-name>role2Filter</filter-name>
+    <filter-class>filters.EmpLoginRole2Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>role2Filter</filter-name>
+    <url-pattern>/back-end/mem/listAllMem.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+
+<!-- 網頁管理員 -->    
+  <filter>
+    <filter-name>role3Filter</filter-name>
+    <filter-class>filters.EmpLoginRole3Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>role3Filter</filter-name>
+    <url-pattern>/back-end/qaList/listAllQA.jsp</url-pattern>
+    <url-pattern>/back-end/newsList/listAllNewsList.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+
+<!-- 商城管理員 -->    
+  <filter>
+    <filter-name>role5Filter</filter-name>
+    <filter-class>filters.EmpLoginRole5Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>role5Filter</filter-name>
+    <url-pattern>/back-end/product/select_Page.jsp</url-pattern>
+    <url-pattern>/back-end/productOrder/Order_select_page.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+
+<!-- 房務管理員 -->    
+  <filter>
+    <filter-name>role6Filter</filter-name>
+    <filter-class>filters.EmpLoginRole6Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>role6Filter</filter-name>
+    <url-pattern>/back-end/checkInAndOut/CheckcControl.jsp</url-pattern>
+    <url-pattern>/back-end/roomOrder/listAllOrder.jsp</url-pattern>
+    <url-pattern>/back-end/roomOrderList/listAllRoomOrderList.jsp</url-pattern>
+    <url-pattern>/back-end/roomtype/listAllRoomType.jsp</url-pattern>
+    <url-pattern>/back-end/room/listAllRoom.jsp</url-pattern>
+    <url-pattern>/back-end/Meal/listAllMeal.jsp</url-pattern>
+    <url-pattern>/back-end/MealCategory/listAllMealCategory.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+
+<!-- 員工管理員 --> 
+  <filter>
+    <filter-name>role7Filter</filter-name>
+    <filter-class>filters.EmpLoginRole7Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>role7Filter</filter-name>
+    <url-pattern>/back-end/emplyee/listAllEmp.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  
+  
+  
+    
+<!--   <filter> -->
+<!--     <filter-name>BackendloginFilter</filter-name> -->
+<!--     <filter-class>filters.BackendLoginFilter</filter-class> -->
+<!--   </filter> -->
+<!--   <filter-mapping> -->
+<!--     <filter-name>BackendloginFilter</filter-name> -->
+<!--     <url-pattern>/back-end/admin/dashboard.jsp</url-pattern> -->
+<!--     <url-pattern>/back-end/demo/*</url-pattern> -->
+<!--     <url-pattern>/back-end/newList/*</url-pattern> -->
+<!--     <url-pattern>/back-end/newListImg/*</url-pattern> -->
+<!--     <url-pattern>/back-end/product/*</url-pattern> -->
+<!--     <url-pattern>/back-end/productClass/*</url-pattern> -->
+<!--     <url-pattern>/back-end/productImg/*</url-pattern> -->
+<!--     <url-pattern>/back-end/productOrder/*</url-pattern> -->
+<!--     <dispatcher>REQUEST</dispatcher> -->
+<!--     <dispatcher>FORWARD</dispatcher> -->
+<!--     <dispatcher>INCLUDE</dispatcher> -->
+<!--     <dispatcher>ERROR</dispatcher> -->
+<!--     <dispatcher>ASYNC</dispatcher> -->
+<!--   </filter-mapping> -->
+  
+  
+  <!-- error-page 錯誤網頁 -->
+<!--
+    <error-page>
+        <error-code>
+            400
+        </error-code>
+        <location>
+            /error.jsp
+        </location>
+    </error-page>
+    
+    <error-page>
+        <error-code>
+            404
+        </error-code>
+        <location>
+            /error.jsp
+        </location>
+    </error-page>
+
+    <error-page>
+        <error-code>
+            500
+        </error-code>
+        <location>
+            /error.jsp
+        </location>
+    </error-page>
+   
+    <error-page>
+        <exception-type>
+            javax.servlet.ServletException
+        </exception-type>
+        <location>
+            /error.jsp
+        </location>
+    </error-page>
+ -->
+  
+<!--   <filter> -->
+<!--     <filter-name>role1Filter</filter-name> -->
+<!--     <filter-class>filters.EmpLoginRole1Filter</filter-class> -->
+<!--   </filter> -->
+<!--   <filter-mapping> -->
+<!--     <filter-name>role1Filter</filter-name> -->
+<!--     <url-pattern>/back-end/emplyee/listAllEmp.jsp</url-pattern> -->
+<!--     <dispatcher>REQUEST</dispatcher> -->
+<!--     <dispatcher>FORWARD</dispatcher> -->
+<!--     <dispatcher>INCLUDE</dispatcher> -->
+<!--     <dispatcher>ERROR</dispatcher> -->
+<!--     <dispatcher>ASYNC</dispatcher> -->
+<!--   </filter-mapping> -->
+  
+</web-app>

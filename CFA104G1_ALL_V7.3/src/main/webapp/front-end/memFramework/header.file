@@ -1,0 +1,142 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+ 
+ <div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #850000;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color: rgba(255,255,255,.8);"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        
+        
+        
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" style="color: rgba(255,255,255,.8);">
+        	<i class="fas fa-user fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+          <a href="<%= request.getContextPath() %>/index.jsp" class="dropdown-item">
+          	<i class="nav-icon fas fa-home"></i>
+        	回首頁
+          </a>
+          <a href="<%= request.getContextPath() %>/mem/mem.do?action=logout" class="dropdown-item">
+          	<i class="fas fa-sign-out-alt"></i>
+        	登出
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-warning elevation-4" style="background-color: #785c36;">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link"  style="background-color: #850000;">
+      <img src="<%=request.getContextPath()+"/resources/images/favicon.png" %>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">彌生酒店會員中心</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3  d-flex">
+        <div class="image">
+          <img src="<%=request.getContextPath()%>/mem/mempic.do?mem_id=<%=memVO.getMem_id()%>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <font size="5">${user.mem_name}</font>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a id="memindex" href="<%=request.getContextPath()+"/front-end/mem/memindex.jsp" %>" class="nav-link">
+              <i class="nav-icon far fa-address-card"></i>
+              <p>
+                會員資料
+              </p>
+            </a>
+          </li>
+          <li id="member-tree" class="nav-item">
+            <a id="member" href="#" class="nav-link">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                會員管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="member-avator" href="<%=request.getContextPath()+"/front-end/mem/memUpdateAvator.jsp" %>" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>變更頭像</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="member-data" href="<%=request.getContextPath()+"/front-end/mem/memUpdateData.jsp" %>" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>變更會員資料</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="member-pwd" href="<%=request.getContextPath()+"/front-end/mem/memUpdatePwd.jsp" %>" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>變更密碼</p>
+                </a>
+              </li>             
+            </ul>
+          </li>
+          
+           <li class="nav-item">
+            <a id="store-order" href="<%=request.getContextPath()+"/front-end/Order/MemberCentreOrder.jsp" %>" class="nav-link">
+              <i class="fas fa-clipboard-list nav-icon"></i>
+              <p>
+                查看購物訂單
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="room-order" href="<%=request.getContextPath()+"/front-end/roomOrder/memCheckOrder.jsp" %>" class="nav-link">
+            <i class="nav-icon fas fa-bed"></i>
+              <p>
+                查看住宿訂單
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="activity-order" href="<%=request.getContextPath()+"/front-end/activityOrder/memActOrder.jsp" %>" class="nav-link">
+            <i class="nav-icon fas fa-mountain"></i>
+              <p>
+                查看活動訂單
+              </p>
+            </a>
+          </li>
+          
+       </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+ 
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+ 
